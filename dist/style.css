@@ -912,10 +912,6 @@ video {
   background-size: cover;
 }
 
-.bg-fixed{
-  background-attachment: fixed;
-}
-
 .bg-center{
   background-position: center;
 }
@@ -988,16 +984,6 @@ video {
 .py-8{
   padding-top: 2rem;
   padding-bottom: 2rem;
-}
-
-.py-12{
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.py-16{
-  padding-top: 4rem;
-  padding-bottom: 4rem;
 }
 
 .pb-0{
@@ -1209,6 +1195,10 @@ video {
 }
 
 @media (min-width: 1024px){
+  .lg\:bg-fixed{
+    background-attachment: fixed;
+  }
+
   .lg\:text-6xl{
     font-size: 3.75rem;
     line-height: 1;
@@ -1227,5 +1217,11 @@ video {
   .lg\:after\:h-\[4px\]::after{
     content: var(--tw-content);
     height: 4px;
+  }
+}
+
+@media (min-width: 1280px){
+  .xl\:bg-fixed{
+    background-attachment: fixed;
   }
 }
