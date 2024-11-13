@@ -5,8 +5,12 @@ const navMobile = document.querySelector("#navMobile");
 const colorImgs = document.querySelectorAll(".color-img");
 const colorBtns = document.querySelectorAll(".color-btn");
 const linksMobile = document.querySelectorAll(".link-mobile");
-const logo = document.querySelector(".logo")
+const logo = document.querySelector(".logo");
+const emptyHearts = document.querySelectorAll(".empty-heart");
+const filledHearts = document.querySelectorAll(".filled-heart");
+const footerYear = document.querySelector("#year")
 let triggerNav;
+const currentDate = new Date();
 
 const checkIfNavShouldBeFixed = () => {
 	const mainPos = main.getBoundingClientRect();
@@ -16,7 +20,7 @@ const checkIfNavShouldBeFixed = () => {
 		nav.classList.add("show-nav");
 		nav.classList.remove("hide-nav");
 		nav.classList.remove("absolute");
-		nav.classList.add("fixed", "bg-orange-400", "shadow-lg");
+		nav.classList.add("fixed", "bg-orange-400", "shadow");
 	} else if (
 		triggerNav > 90 &&
 		triggerNav < 200 &&
@@ -24,10 +28,10 @@ const checkIfNavShouldBeFixed = () => {
 	) {
 		nav.classList.remove("show-nav");
 		nav.classList.add("hide-nav");
-	} else if (triggerNav > (screen.height * 0.5)) {
+	} else if (triggerNav > screen.height * 0.5) {
 		nav.classList.remove("hide-nav");
 		nav.classList.add("absolute");
-		nav.classList.remove("fixed", "bg-orange-400", "shadow-lg");
+		nav.classList.remove("fixed", "bg-orange-400", "shadow");
 	}
 };
 
@@ -49,6 +53,16 @@ const hideMobileNav = () => {
 	hamburgerBtn.classList.remove("is-active");
 	navMobile.classList.remove("hide-mobile-nav");
 	navMobile.classList.remove("active-mobile-nav");
+};
+
+function fillHeart() {
+	this.classList.add("hidden");
+	this.nextElementSibling.classList.remove("hidden");
+}
+
+function emptyHeart() {
+	this.classList.add("hidden");
+	this.previousElementSibling.classList.remove("hidden");
 }
 
 function changeImageColor() {
@@ -64,6 +78,11 @@ function changeImageColor() {
 	}
 }
 
+const setYearInFooter = () => {
+	footerYear.textContent = currentDate.getFullYear();
+}
+setYearInFooter();
+
 window.addEventListener("scroll", checkIfNavShouldBeFixed);
 hamburgerBtn.addEventListener("click", toggleMobileNav);
 logo.addEventListener("click", hideMobileNav);
@@ -74,4 +93,12 @@ colorBtns.forEach((btn) => {
 
 linksMobile.forEach((link) => {
 	link.addEventListener("click", toggleMobileNav);
+});
+
+emptyHearts.forEach((heart) => {
+	heart.addEventListener("click", fillHeart);
+});
+
+filledHearts.forEach((heart) => {
+	heart.addEventListener("click", emptyHeart);
 });
