@@ -1,0 +1,51 @@
+.hide-body {
+    overflow-y: hidden;
+}
+
+.active-mobile-nav {
+    animation: show-mobile-nav 0.5s ease-in-out forwards;
+}
+
+.hide-mobile-nav {
+    animation: hide-mobile-nav 0.5s ease-in-out forwards;
+}
+
+@keyframes show-mobile-nav {
+    from {
+        top: -100vh;
+    } to {
+        top: 0;
+    }
+}
+
+@keyframes hide-mobile-nav {
+    from {
+        top: 0;
+    } to {
+        top: -100vh;
+    }
+}
+
+.show-nav {
+    animation: show-nav 0.5s ease-in-out forwards;
+}
+
+.hide-nav {
+    animation: hide-nav 0.5s ease-in-out forwards;
+}
+
+@keyframes show-nav {
+    from {
+        top: -100px;
+    } to {
+        top: 0;
+    }
+}
+
+@keyframes hide-nav {
+    from {
+        top: 0;
+    } to {
+        top: -100px;
+    }
+}
