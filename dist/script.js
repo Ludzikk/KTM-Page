@@ -8,9 +8,11 @@ const linksMobile = document.querySelectorAll(".link-mobile");
 const logo = document.querySelector(".logo");
 const emptyHearts = document.querySelectorAll(".empty-heart");
 const filledHearts = document.querySelectorAll(".filled-heart");
-const footerYear = document.querySelector("#year")
+const footerYear = document.querySelector("#year");
+const arrowBtn = document.querySelectorAll(".arrow-btn");
 let triggerNav;
 const currentDate = new Date();
+let slider1 = 0;
 
 const checkIfNavShouldBeFixed = () => {
 	const mainPos = main.getBoundingClientRect();
@@ -80,8 +82,49 @@ function changeImageColor() {
 
 const setYearInFooter = () => {
 	footerYear.textContent = currentDate.getFullYear();
-}
+};
 setYearInFooter();
+
+function switchSlide() {
+	const slideDiv = this.parentElement.children[1];
+
+	switch (this.id) {
+		case "arrow-left":
+			slideDiv.classList.remove("from-right-slide");
+			slideDiv.classList.remove("to-right-slide");
+			slideDiv.classList.remove("from-left-slide");
+			slideDiv.classList.add("to-left-slide");
+
+			setTimeout(() => {
+				slideDiv.classList.remove("to-left-slide");
+				slideDiv.classList.add("from-right-slide");
+				slideDiv.children[slider1].classList.add("hidden");
+				slider1++;
+				if (slider1 === slideDiv.children.length) {
+					slider1 = 0;
+				}
+				slideDiv.children[slider1].classList.remove("hidden");
+			}, 300);
+			break;
+		case "arrow-right":
+			slideDiv.classList.remove("from-left-slide");
+			slideDiv.classList.remove("to-left-slide");
+			slideDiv.classList.remove("from-right-slide");
+			slideDiv.classList.add("to-right-slide");
+
+			setTimeout(() => {
+				slideDiv.classList.add("from-left-slide");
+				slideDiv.classList.remove("to-right-slide");
+				slideDiv.children[slider1].classList.add("hidden");
+				slider1--;
+				if (slider1 < 0) {
+					slider1 = slideDiv.children.length - 1;
+				}
+				slideDiv.children[slider1].classList.remove("hidden");
+			}, 300);
+			break;
+	}
+}
 
 window.addEventListener("scroll", checkIfNavShouldBeFixed);
 hamburgerBtn.addEventListener("click", toggleMobileNav);
@@ -102,3 +145,8 @@ emptyHearts.forEach((heart) => {
 filledHearts.forEach((heart) => {
 	heart.addEventListener("click", emptyHeart);
 });
+
+arrowBtn.forEach((arrow) => {
+	arrow.addEventListener("click", switchSlide);
+});
+
