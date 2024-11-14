@@ -10,9 +10,11 @@ const emptyHearts = document.querySelectorAll(".empty-heart");
 const filledHearts = document.querySelectorAll(".filled-heart");
 const footerYear = document.querySelector("#year");
 const arrowBtn = document.querySelectorAll(".arrow-btn");
+const arrowBtn1 = document.querySelectorAll(".arrow-btn-1");
 let triggerNav;
 const currentDate = new Date();
 let slider1 = 0;
+let slider2 = 0;
 
 const checkIfNavShouldBeFixed = () => {
 	const mainPos = main.getBoundingClientRect();
@@ -123,10 +125,47 @@ function switchSlide() {
 				slideDiv.children[slider1].classList.remove("hidden");
 			}, 300);
 			break;
+		case "arrow-left1":
+			slideDiv.classList.remove("from-right-slide");
+			slideDiv.classList.remove("to-right-slide");
+			slideDiv.classList.remove("from-left-slide");
+			slideDiv.classList.add("to-left-slide");
+
+			setTimeout(() => {
+				slideDiv.classList.remove("to-left-slide");
+				slideDiv.classList.add("from-right-slide");
+				slideDiv.children[slider2].classList.add("hidden");
+				slider2++;
+				if (slider2 === slideDiv.children.length) {
+					slider2 = 0;
+				}
+				slideDiv.children[slider2].classList.remove("hidden");
+			}, 300);
+			break;
+		case "arrow-right1":
+			slideDiv.classList.remove("from-left-slide");
+			slideDiv.classList.remove("to-left-slide");
+			slideDiv.classList.remove("from-right-slide");
+			slideDiv.classList.add("to-right-slide");
+
+			setTimeout(() => {
+				slideDiv.classList.add("from-left-slide");
+				slideDiv.classList.remove("to-right-slide");
+				slideDiv.children[slider2].classList.add("hidden");
+				slider2--;
+				if (slider2 < 0) {
+					slider2 = slideDiv.children.length - 1;
+				}
+				slideDiv.children[slider2].classList.remove("hidden");
+			}, 300);
+			break;
 	}
 }
 
-window.addEventListener("scroll", checkIfNavShouldBeFixed);
+if(document.body.id === "index") {
+	window.addEventListener("scroll", checkIfNavShouldBeFixed);
+}
+
 hamburgerBtn.addEventListener("click", toggleMobileNav);
 logo.addEventListener("click", hideMobileNav);
 
@@ -150,3 +189,6 @@ arrowBtn.forEach((arrow) => {
 	arrow.addEventListener("click", switchSlide);
 });
 
+arrowBtn1.forEach((arrow) => {
+	arrow.addEventListener("click", switchSlide);
+});
