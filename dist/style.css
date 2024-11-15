@@ -766,6 +766,10 @@ video {
   display: flex;
 }
 
+.grid{
+  display: grid;
+}
+
 .hidden{
   display: none;
 }
@@ -788,18 +792,6 @@ video {
 
 .h-screen{
   height: 100vh;
-}
-
-.h-\[20px\]{
-  height: 20px;
-}
-
-.h-\[50px\]{
-  height: 50px;
-}
-
-.h-\[37px\]{
-  height: 37px;
 }
 
 .max-h-full{
@@ -830,8 +822,8 @@ video {
   width: 200px;
 }
 
-.w-\[300px\]{
-  width: 300px;
+.w-\[250px\]{
+  width: 250px;
 }
 
 .w-\[375px\]{
@@ -846,20 +838,12 @@ video {
   width: 100vw;
 }
 
-.w-\[250px\]{
-  width: 250px;
-}
-
-.w-\[22px\]{
-  width: 22px;
-}
-
 .max-w-\[1200px\]{
   max-width: 1200px;
 }
 
-.max-w-\[1600px\]{
-  max-width: 1600px;
+.max-w-\[1400px\]{
+  max-width: 1400px;
 }
 
 .max-w-\[350px\]{
@@ -872,10 +856,6 @@ video {
 
 .max-w-screen-xl{
   max-width: 1280px;
-}
-
-.max-w-\[1400px\]{
-  max-width: 1400px;
 }
 
 .cursor-pointer{
@@ -1011,6 +991,26 @@ video {
 
 .bg-gradient-to-t{
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
+}
+
+.bg-\[url\(\'\.\.\/dist\/img\/ktm33-1\.jpg\'\)\]{
+  background-image: url('../dist/img/ktm33-1.jpg');
+}
+
+.bg-\[url\(\'\.\.\/dist\/img\/ktm300-1\.jpg\'\)\]{
+  background-image: url('../dist/img/ktm300-1.jpg');
+}
+
+.bg-\[url\(\'\.\.\/dist\/img\/ktm300-2\.jpg\'\)\]{
+  background-image: url('../dist/img/ktm300-2.jpg');
+}
+
+.bg-\[url\(\'\.\.\/dist\/img\/duke1\.jpg\'\)\]{
+  background-image: url('../dist/img/duke1.jpg');
+}
+
+.bg-\[url\(\'\.\.\/dist\/img\/duke2\.jpg\'\)\]{
+  background-image: url('../dist/img/duke2.jpg');
 }
 
 .from-black\/15{
@@ -1425,11 +1425,6 @@ video {
 .hover\:text-orange-400:hover{
   --tw-text-opacity: 1;
   color: rgb(251 146 60 / var(--tw-text-opacity));
-}
-
-.hover\:text-orange-500:hover{
-  --tw-text-opacity: 1;
-  color: rgb(249 115 22 / var(--tw-text-opacity));
 }
 
 @media (min-width: 640px){
